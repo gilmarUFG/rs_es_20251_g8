@@ -1,0 +1,18 @@
+Técnicas para Especificação de Requisitos
+
+1. Casos de Uso (Use Cases)
+A técnica de Casos de Uso, faz uso de  narrativas que descrevem como os usuários (ou atores) interagem com o 
+sistema para atingir um objetivo específico. É uma especificação ideal para entender e comunicar como o sistema
+será utilizado no dia a dia, especialmente em sistemas com forte interação usuário-sistema ou sistema-sistema.
+
+Sua princípal vantagem é o relacionamento que promove um  entendimento claro entre desenvolvedores
+e stakeholders. Ajudando a identificar interações completas, incluindo exceções e fluxos alternativos. Sua principal 
+desvantagem é :  Pouco eficiente para detalhar requisitos não-funcionais e pode se tornar complexo em sistemas muito 
+grandes.
+
+2. Especificação por Requisitos Funcionais (IEEE 830)
+A técnica descreve requisitos funcionais de forma clara, estruturada e numerada, geralmente em linguagem natural 
+e formalizada. Fonece uma boa documentação formal, rastreabilidade e comunicação entre equipes técnicas e é muito 
+fácil de escrever e compreender. Permite boa organização e rastreamento de mudanças, se bem estruturado reduz a 
+ambiguidade. Sua principal desvantagem é : Pode ser ambígua se mal escrita e menos intuitiva para usuários não 
+técnicos.
