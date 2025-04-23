@@ -1,6 +1,3 @@
-\*\*Discente:\*\* \[202200031\_Raquel\]    
-\*\*Disciplina:\*\* Requisitos de Software
-
 \# Técnicas para Especificação de Requisitos
 
 \#\# 1\. Pesquisa 
@@ -76,4 +73,7 @@ Este caso de uso descreve como o sistema de agricultura inteligente coleta dados
 O sistema deve permitir que o usuário acompanhe, em tempo real, o consumo de energia elétrica de cada equipamento conectado, exibindo gráficos comparativos por período (hora, dia, semana) e alertas de consumo excessivo.
 
 \---
+
+\*\*Discente:\*\* \[202200031\_Raquel\]    
+\*\*Disciplina:\*\* \[Requisitos de Software\]
 
