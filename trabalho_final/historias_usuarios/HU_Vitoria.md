@@ -1,0 +1,47 @@
+## História de Usuário
+
+### ID  
+HU-
+
+### Título  
+Integrar visualização interativas com os dados coletados por sensores 
+
+### Descrição 
+Como **usuário** do sistema de monitoramento do campo, eu quero **visualizar em tempo real os dados dos sensores por meio de gráficos e mapas interativos**,
+para que eu **possa tomar decisões rápidas e informadas com base nas condições do ambiente**.
+
+### Critérios de Aceitação
+
+#### Cenário 1: Visualização de dados em tempo real
+- **Dado que** o sistema esteja recebendo dados dos sensores
+- **Quando** o usuário acessar o painel de visualização
+- **Então** os gráficos e mapas devem exibir os dados atualizados em tempo real
+
+#### Cenário 2: Interação com o mapa
+- **Dado que** os sensores estejam distribuídos geograficamente no campo
+- **Quando** o usuário interagir com o mapa
+- **Então** ele deve visualizar informações detalhadas de cada sensor, como localização, tipo e última leitura
+
+#### Cenário 3: Filtragem de dados
+- **Dado que** existam diferentes tipos de sensores e períodos de coleta
+- **Quando** o usuário aplicar filtros por tipo de sensor, período de tempo ou localização
+- **Então** as visualizações devem se atualizar conforme os filtros aplicados
+
+#### Cenário 4: Detecção de anomalia crítica
+- **Dado que** os sensores estão conectados às plantações
+- **Quando** uma anomalia de alta severidade for detectada
+- **Então** o sistema deve enviar alertas via SMS ou e-mail dentro de 2 minutos.
+
+### Prioridade  
+Média
+
+### Dependências 
+- Conectividade estável dos sensores ao backend.
+- Serviço de geolocalização configurado para mapeamento.
+- Integração com provedor de SMS/e-mail para alertas.
+- Banco de dados com timestamps precisos para streaming em tempo real.
+
+### Notas/Comentários Adicionais
+- Considerar uso de WebSockets ou MQTT para garantir baixa latência das atualizações
+- Garantir responsividade e usabilidade em dispositivos móveis
+- Monitorar volume de dados e escalabilidade do pipeline de ingestão
