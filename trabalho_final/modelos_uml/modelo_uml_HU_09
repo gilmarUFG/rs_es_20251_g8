@@ -4,61 +4,60 @@ title Diagrama de Classes - HU-009: Acionamento Automático da Irrigação
 skinparam classAttributeIconSize 0
 
 class Agricultor {
-  +idUsuario
-  +nome
-  +contato
+  +idUsuario:int
+  +nome:String
+  +contato:String
 }
 
 class Talhao {
-  +idTalhao
-  +nomeIdentificador
-  +area
-  +localizacaoGeografica
+  +idTalhao:int
+  +nomeIdentificador:String
+  +area:double
+  +localizacaoGeografica:double
 }
 
 class Cultura {
-  +idCultura
-  +nomeCultura
-  +nivelUmidadeIdealMin
-  +nivelUmidadeIdealMax
+  +idCultura:int
+  +nomeCultura:String
+  +nivelUmidadeIdealMin:double
+  +nivelUmidadeIdealMax:double
 }
 
 class SensorUmidadeSolo {
-  +idSensor
-  +localizacaoNoTalhao
-  +nivelUmidadeAtual
-  +timestampUltimaLeitura
- +statusOperacional
+  +idSensor:int 
+  +localizacaoNoTalhao:double
+  +nivelUmidadeAtual:double
+  +timestampUltimaLeitura:double
+ +statusOperacional:boolean
 }
 
 class SistemaIrrigacao {
-  +idSistemaIrrigacao
-  +tipo
-  +statusOperacional
-  +capacidadeVazao
+  +idSistemaIrrigacao:int
+  +tipo:String
+  +statusOperacional:boolean
 }
 
 class ConfiguracaoIrrigacao {
-  +idConfiguracao
-  +limiteMinUmidadeAcionamento
-  +limiteMaxUmidadeDesligamento
-  +ativo
+  +idConfiguracao: int 
+  +limiteMinUmidadeAcionamento:double
+  +limiteMaxUmidadeDesligamento:double
+  +ativo:booleam
 }
 
 class EventoIrrigacao {
-  +idEvento
-  +dataHoraInicio
-  +dataHoraFim
-  +nivelUmidadeInicio
-  +nivelUmidadeFim
-  +tipoEvento
+  +idEvento:int 
+  +dataHoraInicio:Date
+  +dataHoraFim:Date
+  +nivelUmidadeInicio:double
+  +nivelUmidadeFim:double
+  +tipoEvento:String
 }
 
 class AlertaFalhaIrrigacao {
-  +idAlerta
-  +dataHora
-  +descricaoFalha
-  +talhaoAfetado
+  +idAlerta:int 
+  +dataHora:Date
+  +descricaoFalha:String
+  +talhaoAfetado:String
 }
 
 Talhao "1" -- "*" SensorUmidadeSolo 
