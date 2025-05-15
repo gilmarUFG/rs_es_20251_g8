@@ -1,6 +1,5 @@
-### História de Usuário 1
-ID
-HU-009
+### História de Usuário 09
+ID: HU-009
 
 ### Título
 Acionamento Automático da Irrigação por Baixa Umidade
@@ -18,7 +17,7 @@ E que o limite mínimo ideal de umidade para a cultura plantada nesse talhão es
 **Então** o sistema deve enviar um comando para acionar o sistema de irrigação correspondente àquele talhão ou zona de manejo.
 E o sistema deve registrar o evento de acionamento (data, hora, talhão, nível de umidade detectado).
 
-###Cenário 2: Sistema de irrigação acionado com sucesso
+### Cenário 2: Sistema de irrigação acionado com sucesso
 **Dado que** o sistema enviou um comando para acionar a irrigação
 **Quando** o sistema de irrigação confirmar o início da operação
 **Então** o sistema deve atualizar o status da irrigação para "Em andamento" para o talhão correspondente.
