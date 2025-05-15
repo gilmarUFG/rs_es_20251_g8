@@ -1,0 +1,54 @@
+@startuml
+skinparam classAttributeIconSize 0
+title Diagrama de Classes - HU-006: Coletar dados do solo 
+
+class SistemaMonitoramentoAgricola {
+  +intervaloColetaDefinido: Duration
+}
+
+class Sensor {
+  +idSensor: String
+  +tipo: TipoSensorEnum
+  +status: StatusSensorEnum
+  +estaInstalado: Boolean
+  +estaConfigurado: Boolean
+}
+
+enum TipoSensorEnum {
+  UMIDADE
+  PH
+  TEMPERATURA
+}
+
+enum StatusSensorEnum {
+  ATIVO
+  INATIVO
+  FALHA_COMUNICACAO
+}
+
+class MedicaoSolo {
+  +valor: Float
+  +tipoMedicao: TipoSensorEnum
+  +dataHora: DateTime
+  +unidade: String
+}
+
+class Alerta {
+  +idAlerta: String
+  +mensagem: String
+  +dataHoraEmissao: DateTime
+  +tipoAlerta: TipoAlertaEnum
+}
+
+enum TipoAlertaEnum {
+  FALHA_SENSOR
+  OUTRO_TIPO_ALERTA
+}
+
+'Sistema controla sensores, medições e alertas
+SistemaMonitoramentoAgricola "1" -- "0..*" Sensor
+Sensor "1" --> "0..*" MedicaoSolo
+SistemaMonitoramentoAgricola "1" -- "0..*" MedicaoSolo
+SistemaMonitoramentoAgricola "1" -- "0..*" Alerta
+Alerta "1" --> "1" Sensor
+@enduml
