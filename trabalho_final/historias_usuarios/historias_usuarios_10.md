@@ -1,6 +1,5 @@
-### História de Usuário 1
-ID
-HU-010
+### História de Usuário 10
+ID: HU-010
 
 ### Título
 Registro e Rastreamento de Insumos Agrícolas 
@@ -19,7 +18,7 @@ Como **Agricultor/Gerente da Fazenda**, eu quero registrar e rastrear o uso de i
 **E** o sistema deve exibir uma mensagem de confirmação do registro.
 **E** o estoque do insumo utilizado (se o controle de estoque estiver ativo) deve ser atualizado.
 
-###Cenário 2: Visualização do histórico de uso de insumos por talhão
+### Cenário 2: Visualização do histórico de uso de insumos por talhão
 **Dado que** o usuário está logado no sistema
 **Quando** ele selecionar um talhão específico e solicitar o histórico de insumos aplicados
 **Então** o sistema deve exibir uma lista ou relatório detalhando todas as aplicações de insumos naquele talhão, incluindo data, 
