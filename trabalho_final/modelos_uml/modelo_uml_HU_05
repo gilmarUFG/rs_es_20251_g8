@@ -1,0 +1,47 @@
+@startuml
+skinparam classAttributeIconSize 0
+title Diagrama de Classes - HU-005: Receber notificações sobre condições da plantação
+
+class Usuario {
+  +idUsuario: String
+  +nome: String
+  +telefoneCelular: String
+}
+
+class ConfiguracaoNotificacao {
+  +idConfiguracao: String
+  +limiteMinTemperatura: Float
+  +limiteMaxTemperatura: Float
+  +limiteMinUmidade: Float
+  +limiteMaxUmidade: Float
+}
+
+class Notificacao {
+  +idNotificacao: String
+  +mensagem: String
+  +dataHoraEnvio: DateTime
+  +statusEnvio: StatusEnvioEnum
+  +tipoNotificacao: TipoNotificacaoEnum
+}
+
+enum StatusEnvioEnum {
+  ENTREGUE
+  PENDENTE
+  FALHA
+}
+
+enum TipoNotificacaoEnum {
+  TEMPERATURA
+  UMIDADE
+  OUTROS
+}
+
+class SistemaNotificacao {
+  +intervaloVerificacao: Duration
+}
+
+' Associações
+Usuario "1" -- "1" ConfiguracaoNotificacao : possui >
+Usuario "1" -- "0..*" Notificacao : recebe >
+SistemaNotificacao "1" -- "0..*" Notificacao : envia >
+@enduml
