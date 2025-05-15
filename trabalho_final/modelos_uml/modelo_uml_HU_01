@@ -1,0 +1,32 @@
+@startuml
+class SistemaAgricultura {
+  - registro: RegistroAlertas
+}
+
+class Sensor {
+  - tipo: String
+  - localizacao: String
+}
+
+class Anomalia {
+  - tipo: String
+  - severidade: int
+}
+
+class Alerta {
+  - dataHora: DateTime
+  - mensagem: String
+  - status: String
+}
+
+class RegistroAlertas {
+  - historico: Alerta[]
+}
+
+SistemaAgricultura "1" *-- "1..*" Sensor
+SistemaAgricultura "1" *-- "1" RegistroAlertas
+SistemaAgricultura "1" -- "1..*" Alerta
+
+Sensor "1" -- "0..*" Anomalia
+Anomalia "1" -- "1" Alerta
+@enduml
