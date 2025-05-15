@@ -1,0 +1,84 @@
+@startuml
+title Diagrama de Classes - HU-010: Registro e Rastreamento de Insumos
+
+skinparam classAttributeIconSize 0
+
+class UsuarioSistema {
+  +idUsuario
+  +nome
+  +perfil 
+}
+
+class Talhao {
+  +idTalhao
+  +nomeIdentificador
+  +area
+  +localizacaoGeografica
+  }
+
+class ZonaManejo {
+  +idZonaManejo
+  +nomeIdentificador
+  +descricao
+}
+
+class Insumo {
+  +idInsumo
+  +nomeComercial
+  +fabricante
+  +unidadeMedidaPadrao
+}
+
+class TipoInsumo {
+  +idTipoInsumo
+  +nome
+  +descricao
+}
+
+class LoteInsumo {
+  +idLote
+  +codigoLote
+  +dataInsumoFabricacao
+  +dataInsumoValidade
+  +quantidadeOriginalNoLote
+}
+
+class RegistroAplicacaoInsumo {
+  +idAplicacao
+  +dataAplicacao
+  +quantidadeAplicada
+  +unidadeAplicada
+  +custoTotalAplicacao
+  +responsavelAplicacao
+  +observacoes
+}
+
+class EstoqueInsumo {
+  +idEstoque
+  +quantidadeAtual
+  +dataUltimaAtualizacao
+  +localArmazenamento
+}
+
+
+class DocumentoAnexo {
+  +idDocumento
+  +nomeArquivo
+  +tipoArquivo
+  +caminhoArquivo
+  +dataUpload
+}
+
+RegistroAplicacaoInsumo "1" -- "0..*" DocumentoAnexo 
+UsuarioSistema "1" -- "*" RegistroAplicacaoInsumo
+Talhao "1" -- "*" RegistroAplicacaoInsumo 
+ZonaManejo "0..*" -- "1" Talhao 
+RegistroAplicacaoInsumo "1" -- "1" Insumo 
+RegistroAplicacaoInsumo "0..1" -- "1" LoteInsumo 
+Insumo "1" -- "1" TipoInsumo 
+Insumo "1" -- "*" LoteInsumo 
+Insumo "1" -- "0..1" EstoqueInsumo 
+
+
+
+@enduml

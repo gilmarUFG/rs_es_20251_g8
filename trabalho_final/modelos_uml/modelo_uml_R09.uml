@@ -1,0 +1,77 @@
+@startuml
+title Diagrama de Classes - HU-009: Acionamento Automático da Irrigação
+
+skinparam classAttributeIconSize 0
+
+class Agricultor {
+  +idUsuario
+  +nome
+  +contato
+}
+
+class Talhao {
+  +idTalhao
+  +nomeIdentificador
+  +area
+  +localizacaoGeografica
+}
+
+class Cultura {
+  +idCultura
+  +nomeCultura
+  +nivelUmidadeIdealMin
+  +nivelUmidadeIdealMax
+}
+
+class SensorUmidadeSolo {
+  +idSensor
+  +localizacaoNoTalhao
+  +nivelUmidadeAtual
+  +timestampUltimaLeitura
+ +statusOperacional
+}
+
+class SistemaIrrigacao {
+  +idSistemaIrrigacao
+  +tipo
+  +statusOperacional
+  +capacidadeVazao
+}
+
+class ConfiguracaoIrrigacao {
+  +idConfiguracao
+  +limiteMinUmidadeAcionamento
+  +limiteMaxUmidadeDesligamento
+  +ativo
+}
+
+class EventoIrrigacao {
+  +idEvento
+  +dataHoraInicio
+  +dataHoraFim
+  +nivelUmidadeInicio
+  +nivelUmidadeFim
+  +tipoEvento
+}
+
+class AlertaFalhaIrrigacao {
+  +idAlerta
+  +dataHora
+  +descricaoFalha
+  +talhaoAfetado
+}
+
+Talhao "1" -- "*" SensorUmidadeSolo 
+Talhao "1" -- "1" SistemaIrrigacao 
+Talhao "1" -- "0..1" Cultura 
+Talhao "1" -- "1" ConfiguracaoIrrigacao 
+
+ConfiguracaoIrrigacao -- "1" Cultura 
+
+SistemaIrrigacao -- "*" EventoIrrigacao 
+Talhao -- "*" EventoIrrigacao 
+SistemaIrrigacao -- "*" AlertaFalhaIrrigacao 
+Agricultor "1" -- "*" AlertaFalhaIrrigacao 
+
+' Relação implícita: O sistema usa dados do SensorUmidadeSolo e ConfiguracaoIrrigacao para decidir acionar o SistemaIrrigacao, gerando um EventoIrrigacao ou AlertaFalhaIrrigacao.
+@enduml
