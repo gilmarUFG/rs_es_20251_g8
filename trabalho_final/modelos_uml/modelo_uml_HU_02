@@ -1,0 +1,32 @@
+@startuml
+
+class Usuario {
+  - id: Integer
+  - nome: String
+  - tipoUsuario: String
+}
+
+class Relatorio {
+  - dataInicio: Date
+  - dataFim: Date
+  - tipoRelatorio: String
+}
+
+class CondicaoAmbiente {
+  - timestamp: DateTime
+  - temperatura: Float
+  - umidade: Float
+  - qualidadeAr: String 
+}
+
+class Sensor {
+  - idSensor: Integer
+  - tipoSensor: String
+  - localizacao: String
+}
+
+Usuario "1" -- "0..*" Relatorio : gera >
+Relatorio "1" -- "1..*" CondicaoAmbiente : contém >
+Sensor "1" -- "0..*" CondicaoAmbiente : registra >
+
+@enduml
