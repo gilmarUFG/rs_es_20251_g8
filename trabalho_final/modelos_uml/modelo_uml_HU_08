@@ -1,0 +1,50 @@
+@startuml
+' Diagrama de Classes - Personalização de Alertas e Relatórios
+
+class Usuario {
+  - id: String
+  - nome: String
+  - perfil: PerfilUsuario
+  + configurarAlertas()
+  + acessarRelatorios()
+}
+
+class PerfilUsuario {
+  - tipo: String
+  - culturasAssociadas: List<String>
+  - fasesAssociadas: List<String>
+}
+
+class Alerta {
+  - id: String
+  - tipoCultivo: String
+  - fasePlanta: String
+  - parametro: String
+  - limite: Float
+  + verificarCondicao(valor: Float): boolean
+}
+
+class Relatorio {
+  - id: String
+  - dataGeracao: DateTime
+  - conteudo: String
+  + gerar(): void
+}
+
+class GerenciadorAlertas {
+  + cadastrarAlerta(alerta: Alerta): void
+  + verificarAlertas(valorSensor: Float): List<Alerta>
+}
+
+class GerenciadorRelatorios {
+  + gerarRelatorio(usuario: Usuario): Relatorio
+}
+
+Usuario "1" *-- "1" PerfilUsuario
+Usuario "1" --> "*" Alerta : configura
+Usuario "1" --> "*" Relatorio : acessa
+
+GerenciadorAlertas "1" o-- "*" Alerta
+GerenciadorRelatorios --> Relatorio
+
+@enduml
