@@ -1,0 +1,61 @@
+@startuml
+skinparam classAttributeIconSize 0
+title Diagrama de Classes - HU-03: Sugestao de pontos criticos e melhorias com base em dados
+
+class Usuario {
+  +idUsuario: String
+  +nome: String
+  +email: String
+}
+
+class PontoCritico {
+  +idPontoCritico: String
+  +localizacao: String
+  +tipoProblema: TipoProblemaEnum
+  +impactoEstimado: String
+  +dataIdentificacao: DateTime
+}
+
+class SugestaoMelhoria {
+  +idSugestao: String
+  +acaoRecomendada: String
+  +prioridade: PrioridadeEnum
+  +dataSugestao: DateTime
+}
+
+enum TipoProblemaEnum {
+  BAIXA_UMIDADE
+  NUTRIENTES_INSUFICIENTES
+  PRAGAS
+  OUTROS
+}
+
+enum PrioridadeEnum {
+  ALTA
+  MEDIA
+  BAIXA
+}
+
+class SistemaAnalise {
+  +intervaloAnalise: Duration
+  +ultimaAtualizacao: DateTime
+}
+
+class HistoricoSugestoes {
+  +idHistorico: String
+  +dataRegistro: DateTime
+  +pontoCritico: PontoCritico
+  +sugestao: SugestaoMelhoria
+}
+
+' Associações
+Usuario "1" -- "0..*" PontoCritico : visualiza >
+Usuario "1" -- "0..*" SugestaoMelhoria : recebe >
+Usuario "1" -- "0..*" HistoricoSugestoes : acessa >
+SistemaAnalise "1" -- "0..*" PontoCritico : identifica >
+SistemaAnalise "1" -- "0..*" SugestaoMelhoria : gera >
+PontoCritico "1" -- "0..*" SugestaoMelhoria : associado a >
+HistoricoSugestoes "1" -- "1" PontoCritico : referencia >
+HistoricoSugestoes "1" -- "1" SugestaoMelhoria : referencia >
+
+@enduml
